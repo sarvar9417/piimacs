@@ -1,0 +1,6 @@
+{
+  "PORT": 80,
+  "MONGO_URI": "mongodb://localhost/alotrade",
+  "JWT_SECRET": "6622332Sa",
+  "base_url": "http://45.87.2.116:80"
+}

@@ -1,0 +1,6 @@
+{
+  "PORT": "8080",
+  "MONGO_URI": "mongodb://localhost/aloshop",
+  "JWT_SECRET": "6622332Sa",
+  "base_url": "http://localhost:8080"
+}
