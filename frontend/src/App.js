@@ -1,6 +1,16 @@
+import { lazy, Suspense } from "react";
+import { Loader } from "./Components/Components";
+
+// pages
+const PageRoutes = lazy(() => import("./Pages/PageRoutes"));
+
 function App() {
   return (
-   <div>Salom</div>
+    <div className="font-amazon">
+      <Suspense fallback={<Loader />}>
+        <PageRoutes />
+      </Suspense>
+    </div>
   );
 }
 

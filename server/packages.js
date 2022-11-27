@@ -7,8 +7,6 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const Joi = require("joi");
-const http = require("http");
-const socketIo = require("socket.io");
 
 module.exports = {
   express,
@@ -21,6 +19,4 @@ module.exports = {
   model,
   Schema,
   Joi,
-  http,
-  socketIo,
 };
