@@ -6,9 +6,9 @@ const otherRoutes = {
   path: "*",
   element: <Navigate to={"/"} replace={true} />,
 };
-// user pages
 const MainPage = lazy(() => import("./MainPage/Main"));
 const AdminPage = lazy(() => import("./AdminPage/Admin"));
+const SectionRoutes = lazy(() => import("./SectionRoutes/SectionRoutes"));
 
 // <-- pages
 
@@ -21,6 +21,10 @@ const userRoutes = [
   {
     path: "/teacher",
     element: <AdminPage />,
+  },
+  {
+    path: "/sectionroutes",
+    element: <SectionRoutes />,
   },
   otherRoutes,
 ];

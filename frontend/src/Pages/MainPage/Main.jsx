@@ -1,11 +1,13 @@
 import React from "react";
 import { mainMenu } from "../../Config/globalConstants";
 import { Link } from "react-router-dom";
-import { map } from "lodash";
+import { map, uniqueId } from "lodash";
 const Main = () => {
-  const menu = map(mainMenu, ({ to, image, name }) => (
+  const menu = map(mainMenu, ({ to, image, name, level }) => (
     <Link
+      key={uniqueId()}
       to={to}
+      state={{ level }}
       className="text-neutral-500 text-center w-[10rem] flex flex-col justify-center items-center text-cyan-500"
     >
       <img
