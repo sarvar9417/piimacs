@@ -1,0 +1,14 @@
+### create a new Level
+POST http://localhost:8080/api/level/create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Lower",
+  "image": "Url"
+}
+
+### get all levels
+GET http://localhost:8080/api/level/getall
+Accept: application/json
+Content-Type: application/json

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const router = express.Router();
 const { model, Schema } = mongoose;
 const config = require("config");
 const cors = require("cors");
@@ -19,4 +20,5 @@ module.exports = {
   model,
   Schema,
   Joi,
+  router,
 };

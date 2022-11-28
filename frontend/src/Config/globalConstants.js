@@ -1,5 +1,6 @@
 import cs from "../assets/images/CS.jpeg";
 import { igcseDatas } from "../datas/igcse";
+import { as_and_aDatas } from "../datas/as&a";
 import { map } from "lodash";
 
 export const mainMenu = [
@@ -18,11 +19,12 @@ const lower = [
   { to: "/data", name: "Data" },
   { to: "/cs", name: "CS" },
 ];
-const igcse = map(igcseDatas, ({ name, sections }) => ({
-  name,
-  sections: sections,
-}));
-const as_and_a = [{ name: "Ai" }];
+
+const getDatas = (datas) =>
+  map(datas, ({ name, sections }) => ({ name, sections }));
+
+const igcse = getDatas(igcseDatas);
+const as_and_a = getDatas(as_and_aDatas);
 const quizs = [{ name: "CPU" }];
 
 export const levels = {

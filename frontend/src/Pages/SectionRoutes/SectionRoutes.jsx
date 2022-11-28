@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { map, uniqueId } from "lodash";
+import { findIndex, map, uniqueId } from "lodash";
 import { levels } from "../../Config/globalConstants";
 
 const SectionRoutes = () => {
@@ -13,6 +13,8 @@ const SectionRoutes = () => {
   const handleMenu = (e) => {
     const name = e.target.name;
     setButtonName(name);
+    const index = findIndex(currentLevel, (level) => level.name === name);
+    setSections(currentLevel[index].sections);
   };
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const SectionRoutes = () => {
     const routes = map(levels[level], ({ name }) => (
       <button
         key={uniqueId()}
-        className={`px-5 border-rounded-t rounded-t z-10  ${
+        className={`px-5 border-rounded-t rounded-t z-10 py-2  ${
           name === buttonName
             ? "bg-white border border-b-0 border-neutral-300 text-neutral-700"
             : "text-neutral-500"
@@ -52,7 +54,7 @@ const SectionRoutes = () => {
             className="mb-3 border-b border-neutral-300 px-2"
           >
             <h3 className="font-amazonbold py-2 text-blue-400">{name}</h3>
-            <code className="text-neutral-600">{description}</code>
+            <div className="text-neutral-600">{description}</div>
             {image && <img src={image} alt={name} className="w-full" />}
           </div>
         ))}
