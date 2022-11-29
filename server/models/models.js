@@ -1,2 +1,3 @@
-const { Level } = require("./levels/Level");
-module.exports = { Level };
+const { Level } = require("./Levels/Level");
+const { Chapter } = require("./Chapters/Chapter");
+module.exports = { Level, Chapter };
