@@ -1,7 +1,7 @@
 const { Schema, model, Joi } = require("../../packages");
 
 const chapter = new Schema({
-  number: { type: Number },
+  number: { type: Number, required: true },
   name: { type: String, required: true },
   level: { type: Schema.Types.ObjectId, ref: "Level" },
 });
