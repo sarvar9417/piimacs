@@ -1,7 +1,7 @@
 const { router } = require("../../packages");
-const { createSection, getSectionsByLevel } = require("./section");
+const { createSection, getSectionsByChapter } = require("./section");
 
 router.post("/create", createSection);
-router.post("/getbylevel", getSectionsByLevel);
+router.post("/getbychapter", getSectionsByChapter);
 
 module.exports = router;

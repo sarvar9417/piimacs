@@ -1,0 +1,20 @@
+### create a new Chapter
+POST http://localhost:8080/api/section/create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "number": "02",
+  "name": "Sysrgh",
+  "level": "6384ceb4662c69dea3223fdb",
+  "chapter": "6385d03c4aa9c0e4df1ba547"
+}
+
+### get all levels
+POST http://localhost:8080/api/section/getbychapter
+Accept: application/json
+Content-Type: application/json
+
+{
+  "chapter": "6385d03c4aa9c0e4df1ba547"
+}

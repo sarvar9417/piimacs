@@ -1,24 +1,31 @@
 const { validateSection } = require("../../models/validators");
-const { Level, Section } = require("../../models/models");
+const { Level, Section, Chapter } = require("../../models/models");
 
 const createSection = async (req, res) => {
   try {
+    console.log(req);
     const { error } = validateSection(req.body);
     if (error) {
       return res.status(400).json({ error: error.message });
     }
 
-    const { number, name, level } = req.body;
+    const { number, name, level, chapter } = req.body;
     const oldLevel = await Level.findById(level);
     if (!oldLevel) {
       return res.status(400).json({ error: "This level is not created" });
     }
-    const oldSection = await Section.findOne({ name, level, number });
+
+    const oldChapter = await Chapter.findById(chapter);
+    if (!oldChapter) {
+      return res.status(400).json({ error: "This chapter is not created" });
+    }
+
+    const oldSection = await Section.findOne({ name, level, number, chapter });
     if (oldSection) {
       return res.status(400).json({ error: "This section is already created" });
     }
 
-    const newSection = new Section({ name, level, number });
+    const newSection = new Section({ name, level, number, chapter });
     await newSection.save();
 
     return res.status(200).json(newSection);
@@ -27,17 +34,17 @@ const createSection = async (req, res) => {
   }
 };
 
-const getSectionsByLevel = async (req, res) => {
+const getSectionsByChapter = async (req, res) => {
   try {
-    const { level } = req.body;
-    const oldLevel = await Level.findById(level);
+    const { chapter } = req.body;
+    const oldLevel = await Level.findById(chapter);
     if (!oldLevel) {
       return res.status(400).json({ error: "This level is not available" });
     }
 
-    const sections = await Section.find({ level })
+    const sections = await Section.find({ chapter })
       .sort({ number: 1 })
-      .select("name number level");
+      .select("name number chapter");
 
     return res.status(200).json(sections);
   } catch (err) {
@@ -45,4 +52,4 @@ const getSectionsByLevel = async (req, res) => {
   }
 };
 
-module.exports = { createSection, getSectionsByLevel };
+module.exports = { createSection, getSectionsByChapter };

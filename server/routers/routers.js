@@ -6,4 +6,5 @@ module.exports.routers = (app) => {
   app.use("/api/upload", require("./fileUpload/fileUpload"));
   app.use("/api/chapter", require("./chapters/router"));
   app.use("/api/level", require("./levels/router"));
+  app.use("/api/section", require("./sections/router"));
 };
